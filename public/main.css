@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+.header {
+  background-color: #f0f0f0; /* Um cinza claro */
+  color: #333; /* Texto escuro sobre o fundo claro */
+}
+
+.navbar {
+  background-color: #e0e0e0; /* Um cinza um pouco mais escuro */
+  color: #444; /* Texto um pouco mais escuro */
+}
+
+.section {
+  background-color: #ffffff; /* Branco puro */
+  color: #666; /* Texto médio escuro */
+}
+
+.aside {
+  background-color: #f9f9f9; /* Um branco muito claro */
+  color: #555; /* Texto um pouco mais escuro */
+}
+
+.footer {
+  background-color: #f0f0f0; /* Mesmo cinza claro que o header */
+  color: #333; /* Texto escuro sobre o fundo claro */
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Mantém duas colunas: uma para conteúdo principal e outra para o aside */
+    grid-template-rows: auto 1fr auto; /* Define três linhas: cabeçalho, corpo e rodapé */
+    gap: 20px; /* Espaçamento entre os itens do grid */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo dentro do container */
+}
+.header,
+.navbar,
+.section,
+.aside {
+  margin-left: auto; /* Empurra o conteúdo para a direita, centralizando-o dentro da coluna */
+  margin-right: auto; /* Empurra o conteúdo para a esquerda, centralizando-o dentro da coluna */
+}
+.header {
+  grid-column: span 2; /* Faz com que o header ocupe toda a largura disponível */
+  grid-row: 1; /* Posiciona no topo */
+}
+
+.navbar {
+  grid-column: span 2; /* Faz com que a navbar ocupe toda a largura disponível */
+  grid-row: 2; /* Posiciona logo após o header */
+}
+
+.section {
+  grid-column: 1 / span 1; /* Ocupa apenas a primeira coluna */
+  grid-row: 3; /* Centraliza na terceira linha, agora que a navbar foi movida */
+}
+
+.aside {
+  grid-column: 2; /* Posiciona na segunda coluna */
+  grid-row: 3 / span 1; /* Centraliza na terceira linha, agora que a navbar foi movida */
+}
+
+/* Ajustes para o footer, caso precise ser centralizado também */
+.footer {
+    grid-column: span 2; /* Faz com que o footer ocupe toda a largura disponível */
+    grid-row: 4; /* Posiciona no final, considerando a nova estrutura de linhas */
+    justify-self: center; /* Centraliza o footer horizontalmente dentro da sua célula do grid */
+  }
+@media (max-width: 768px) {
+ .container {
+    grid-template-columns: 1fr; /* Coloca tudo em uma única coluna em telas pequenas */
+    grid-template-rows: auto 1fr auto; /* Mantém as três linhas */
+  }
+
+ .aside {
+    grid-row: 1; /* Mova o aside para a primeira linha em telas pequenas */
+  }
+
+ .section {
+    grid-row: 2; /* Mova a section para a segunda linha em telas pequenas */
+  }
+}
